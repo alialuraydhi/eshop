@@ -18,15 +18,22 @@ public class ProductController {
     private ProductService service;
 
     @GetMapping("/create")
-    public String createfredustPost(@ModelAttribute Product product, Model model) {
+    public String createProductPage(Model model) {
+        Product product = new Product();
+        model.addAttribute("product" ,product);
+        return "createProduct";
+    }
+
+    @PostMapping("/create")
+    public String createProductPost(@ModelAttribute Product product, Model model) {
         service.create(product);
-        return "retirect List";
+        return "redirect:list";
     }
 
     @GetMapping("/list")
     public String productListPAge(Model model) {
         List<Product> allProducts = service.findAll();
         model.addAttribute("products", allProducts);
-        return "acuductList";
+        return "productList";
     }
 }
