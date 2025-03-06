@@ -1,19 +1,13 @@
-package id.ac.ui.cs.advprog.eshop.model;
+package id.ac.ui.cs.advprog.eshop.controller;
 
-import lombok.Getter;
-import lombok.Setter;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.UUID;
+@Controller
+public class HomeController {
 
-@Getter @Setter
-public class Product {
-    private String productId;
-    private String productName;
-    private int productQuantity;
-
-    // Constructor to generate UUID automatically
-    public Product() {
-        this.productId = UUID.randomUUID().toString();
-
+    @GetMapping("/")
+    public String home() {
+        return "HomePage"; // Sesuai dengan file index.html
     }
 }
